@@ -78,11 +78,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>        
-                
-                
-                
-                
+        </dependency>
+        
+        <!--para agregar el firebase-->
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <version>9.2.0</version>
+        </dependency>
+    
     </dependencies>
 
     <build>
