@@ -1,13 +1,5 @@
 package com.tienda.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.stereotype.Controller;
-
-import com.tienda.service.CategoriaService;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.tienda.domain.Categoria;
 import com.tienda.service.CategoriaService;
 import com.tienda.service.impl.FirebaseStorageServiceImpl;
