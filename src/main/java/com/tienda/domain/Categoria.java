@@ -4,6 +4,7 @@ package com.tienda.domain;
 import lombok.Data;
 import java.io.Serializable;
 import jakarta.persistence.*;
+import java.util.List;
 
 
 //TAGS vamos a recopilar datos con DATA y vamos a tener un entidad
@@ -13,7 +14,7 @@ import jakarta.persistence.*;
 
 public class Categoria implements Serializable {
     
-    //esto siguiente nos permite poder modiciar el ID y poder enviar toda la info y poder tranformarla o almacenarla en BD (editar, enviar, modificarlo, eliminarlo)
+    //esto siguiente nos permite poder modificar el ID y poder enviar toda la info y poder tranformarla o almacenarla en BD (editar, enviar, modificarlo, eliminarlo)
     private static final long serialVersionUID = 1L;
     
     
@@ -28,6 +29,10 @@ public class Categoria implements Serializable {
     private String rutaImagen;
     private boolean activo;
 
+    @OneToMany
+    @JoinColumn(name = "id_categoria", updatable = false)
+    List<Producto> productos;
+    
     public Categoria() {
     }
 
