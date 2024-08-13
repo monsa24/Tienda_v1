@@ -29,6 +29,8 @@ public class Categoria implements Serializable {
     private String rutaImagen;
     private boolean activo;
 
+    
+    //Cual es la columna con la que va hacer match 
     @OneToMany
     @JoinColumn(name = "id_categoria", updatable = false)
     List<Producto> productos;
