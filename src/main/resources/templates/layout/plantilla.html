@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"       
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:fragment="head">
         <!--ETIQUETAS link y scripts-->
         <title>TechShop</title>         
@@ -27,7 +28,7 @@
                             <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>
 
 
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" sec:authorize='hasRole("ROLE_ADMIN")'>
                                 <a class="nav-link dropdown-toggle" 
                                    data-bs-toggle="dropdown" 
                                    href="#" 
@@ -36,11 +37,11 @@
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item"  th:href="@{/pruebas/listado}">[[#{plantilla.asociaciones}]]</a></li>
                                     <li><a class="dropdown-item" th:href="@{/pruebas/listado2}">[[#{plantilla.consultas}]]</a></li>
-                                   
+
                                 </ul>
                             </li>
 
-                                                        
+
                             <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/usuario/listado}">[[#{plantilla.usuarios}]]</a></li>                         
                         </ul>                         
 
@@ -51,9 +52,42 @@
                                 <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=es)}">ES</a></li>                                 
                                 <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=en)}">EN</a></li>                             
                             </ul>
+
+
+
                         </div>
                     </div>
-                 </div>
+
+                    <!--LOGIN-->
+                    <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                        <li class="nav-item px-2">
+                            <a class="nav-menu-link nav-link"
+                               th:href="@{/login}">
+                                <!--ícono-->
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a> 
+                        </li>
+                        <li class="nav-item text-white my-auto">
+                            <i class="fas fa-user"></i>
+                            <span sec:authentication="name">Bob</span>
+                        </li>
+                        <!--LOGOUT-->
+                        <!--revisar arriba en el Thymeleaf que este el de springsecurity-->
+                        <li class="nav-item my-auto">
+                            <form method="post" th:action="@{/logout}">
+                                <button class="btn btn-dark">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    
+                                </button>
+                            </form>
+                        </li>
+
+                    </ul>
+
+
+
+
+                </div>
             </nav>
 
             <section id="main-header" class="py-2 bg-success text-white">
@@ -77,7 +111,7 @@
                 </div>
             </div>
         </footer>
-        
-        
+
+
     </body>
 </html>
